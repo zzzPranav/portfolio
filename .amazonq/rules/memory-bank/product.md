@@ -1,7 +1,6 @@
 # Product Overview
 
 ## Project Purpose
-Personal portfolio website showcasing professional profile, skills, experience, and work samples. Built using the iPortfolio Bootstrap template to create a modern, responsive single-page application for personal branding and professional presentation.
 
 ## Value Proposition
 - Professional online presence with comprehensive personal information display

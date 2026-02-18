@@ -86,7 +86,6 @@ The main `index.html` follows a sectioned layout pattern:
 ## Architectural Patterns
 
 ### Template-Based Architecture
-Built on BootstrapMade's iPortfolio template with customization capabilities.
 
 ### Progressive Enhancement
 - Core HTML content accessible without JavaScript
