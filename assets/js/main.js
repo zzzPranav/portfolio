@@ -15,6 +15,11 @@
   menuClose.addEventListener('click', () => setMenu(false));
   menuLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
 
+  document.querySelectorAll('.education-card p').forEach((paragraph) => {
+    if (paragraph.textContent.trim() === 'Business Intelligence & Data Analytics') paragraph.remove();
+  });
+  document.querySelector('.ambient-stripes')?.remove();
+
   document.querySelectorAll('.lens-copy .signature').forEach((signature) => signature.remove());
   document.querySelectorAll('.marquee-track').forEach((track) => {
     const items = [...track.children];
