@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CribCheck | Pranav Srusti</title>
+  <meta name="description" content="CribCheck, a HackCMU 2026 project: catch housing damage early with guided capture, AI findings, and a shareable evidence report.">
+  <link rel="icon" href="assets/img/profile_photu.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"><link href="assets/css/main.css" rel="stylesheet"><link href="assets/css/motion.css" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="ambient-stripes" aria-hidden="true"><span class="squiggle squiggle-a"></span><span class="squiggle squiggle-b"></span><span class="squiggle squiggle-c"></span><span class="squiggle squiggle-d"></span><span class="squiggle squiggle-e"></span></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <header class="site-header"><a class="wordmark" href="index.html#top">PS<span>.</span></a><nav class="desktop-nav"><a href="index.html#story">Story</a><a href="index.html#education">Education</a><a href="index.html#experience">Experience</a><a href="index.html#lab">Lab</a><a href="index.html#lens">Wider lens</a><a class="nav-resume magnetic" href="assets/resume/Pranav_Srusti_Resume.pdf" target="_blank" rel="noopener">Resume <i class="bi bi-arrow-up-right"></i></a></nav><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i class="bi bi-list"></i></button></header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><button class="menu-close" id="menu-close" aria-label="Close navigation"><i class="bi bi-x-lg"></i></button><p class="eyebrow">Navigate / CribCheck</p><nav><a href="index.html#story">Story</a><a href="index.html#lab">Lab</a><a href="#deck">The idea</a><a href="#product">Product</a><a href="#model">Model</a></nav><a class="mobile-resume" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Open the live app <i class="bi bi-arrow-up-right"></i></a></div>
+  <main id="top">
+    <section class="case-hero" id="story">
+      <div class="reveal">
+        <p class="eyebrow">HackCMU 2026 <span>/</span> team gotplacestobe</p>
+        <div class="case-kicker"><span>Vidushi Bist</span><span>Vanshika Gupta</span><span>Gaurav Bhat</span><span>Pranav Srusti</span></div>
+        <h1>cribCheck<br><em>early evidence</em><br>before the crisis.</h1>
+        <p>Renters see the stain first. Landlords need a record they can trust. CribCheck guides a phone camera across high-risk surfaces, labels what it sees, and turns that into a shareable property report — evidence, not a medical or legal diagnosis.</p>
+        <div class="featured-actions" style="margin-top:32px">
+          <a class="button button-primary magnetic" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Launch live app <i class="bi bi-arrow-up-right"></i></a>
+          <a class="button button-ghost magnetic" href="#deck">Walk through the pitch</a>
+          <a class="button button-ghost magnetic" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="case-collage reveal reveal-delay">
+        <img class="wide" src="assets/lab/cribcheck/crack.png" alt="Hairline crack spreading from a door frame">
+        <img src="assets/lab/cribcheck/mark.png" alt="CribCheck mark">
+        <img src="assets/lab/cribcheck/dataset.png" alt="Labeled wall-defect examples from the detector">
+      </div>
+    </section>
+    <div class="case-layout">
+      <nav class="case-toc" aria-label="CribCheck chapters">
+        <a href="#deck">The idea</a>
+        <a href="#problem">Problem</a>
+        <a href="#product">Product</a>
+        <a href="#model">Model</a>
+        <a href="#honesty">Boundaries</a>
+        <a href="#assets">Assets</a>
+      </nav>
+      <div>
+        <section class="case-chapter" id="deck">
+          <p class="eyebrow">Browse the pitch</p>
+          <h2>Twelve beats.<br>Arrow keys work.</h2>
+          <p>This is the same story we used at the table. Click through it, then jump to the live product or the source.</p>
+          <div class="deck" id="idea-deck">
+            <div class="deck-stage">
+              <article class="deck-slide is-on">
+                <div><p class="eyebrow">01 / Hook</p><h3>Catch housing damage early.</h3><p>A small stain is cheap. An ignored leak is a crisis. CribCheck exists to pull evidence forward in time.</p></div>
+                <img src="assets/lab/cribcheck/mark.png" alt="CribCheck mark">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">02 / Problem</p><h3>Damage stays invisible until it is expensive.</h3><p>Renters see it first. Requests get ignored. Costs compound once the damage is undeniable.</p></div>
+                <img src="assets/lab/cribcheck/crack.png" alt="Crack in a wall">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">03 / Stakes</p><h3>Most renters already face habitability issues.</h3><p>60% had more than one issue in two years. Only 18% were very confident their landlord would act. Typical remediation sits around $2.3–2.4K.</p></div>
+                <img src="assets/lab/cribcheck/crack.png" alt="Structural crack">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">04 / Cost of waiting</p><h3>Inspection, labs, then whole-house jobs.</h3><p>Mold inspection averages about $671. Left long enough, jobs run $10–30K. Dampness is common, and it is linked to respiratory harm.</p></div>
+                <img src="assets/lab/cribcheck/peeling.png" alt="Peeling ceiling">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">05 / Answer</p><h3>Identify damage. Relay it clearly.</h3><p>Guided capture, plain-English labels with on-photo boxes, ghost overlay for progression, and a structured report.</p></div>
+                <img src="assets/lab/cribcheck/dataset.png" alt="Labeled defect dataset examples">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">06 / Flow</p><h3>From worry to a shareable record.</h3><p>Sign in as tenant or owner, pick a property, capture with Gemini + Roboflow, review, then share and act.</p></div>
+                <img src="assets/lab/cribcheck/stack.png" alt="CribCheck technical stack diagram">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">07 / Differentiators</p><h3>More than a photo app.</h3><p>nextBestSurface() spends limited patience where risk is highest. Unreviewed findings are not claims. Progression is lined up, not argued.</p></div>
+                <img src="assets/lab/cribcheck/dataset.png" alt="Detector boxes on wall defects">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">08 / Model</p><h3>RF-DETR Small on a held-out set.</h3><p>79.7% mAP@50. 92.1% precision. 70% recall. High precision means fewer false alarms to landlords. Gemini still helps on ambiguous mold.</p></div>
+                <img src="assets/lab/cribcheck/stack.png" alt="How models are combined">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">09 / Boundaries</p><h3>Honesty is part of the pitch.</h3><p>We surface visible indicators and measure change. We do not diagnose species, invent a mold threshold, or see moisture behind walls.</p></div>
+                <img src="assets/lab/cribcheck/dataset.png" alt="Labeled defect examples">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">10 / Who wins</p><h3>The earlier the evidence, the smaller the crisis.</h3><p>Renters get proof. Landlords get cheaper alerts. The wedge is an early-evidence layer on a $15B health and housing problem.</p></div>
+                <img src="assets/lab/cribcheck/crack.png" alt="Early crack that can still be fixed">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">11 / Demo</p><h3>Thirty seconds on a real property.</h3><p>Open as a tenant. Follow the surface prompt. Shoot a defect. Show the finding badge. Optionally overlay the ghost, then open the report.</p></div>
+                <img src="assets/lab/cribcheck/peeling.png" alt="Ceiling damage used in demo talk track">
+              </article>
+              <article class="deck-slide">
+                <div><p class="eyebrow">12 / Close</p><h3>Save money before the crisis.</h3><p>Evidence landlords can act on. Try the guided walkthrough, or tell us where the detector is wrong.</p></div>
+                <img src="assets/lab/cribcheck/mark.png" alt="CribCheck mark">
+              </article>
+            </div>
+            <div class="deck-nav">
+              <button class="button button-ghost" type="button" data-deck="prev">Prev</button>
+              <div class="deck-dots" id="deck-dots"></div>
+              <button class="button button-primary" type="button" data-deck="next">Next</button>
+            </div>
+          </div>
+        </section>
+        <section class="case-chapter" id="problem">
+          <p class="eyebrow">The problem</p>
+          <h2>Requests fail because the record is weak.</h2>
+          <p>Stains, leaks, and mold show up in lived-in rooms long before they show up in a work order that anyone trusts. Without a shared, time-stamped record, maintenance gets delayed, disputed, or dismissed. By the time the damage is obvious, remediation and deposit fights cost far more than an early fix.</p>
+          <div class="case-grid-4">
+            <div class="metric-card"><strong>60%</strong><span>Renters with more than one habitability issue in two years</span></div>
+            <div class="metric-card"><strong>26%</strong><span>Reached out and say no attempt was made to fix it</span></div>
+            <div class="metric-card"><strong>18%</strong><span>Very confident the landlord would act</span></div>
+            <div class="metric-card"><strong>$2.4K</strong><span>Typical remediation, before whole-house jobs</span></div>
+          </div>
+        </section>
+        <section class="case-chapter" id="product">
+          <p class="eyebrow">The product</p>
+          <h2>A camera that knows where to look next.</h2>
+          <p>CribCheck is a mobile web app. A renter or inspector signs in, picks a property, and is prompted toward the next best surface. Gemini and a trained Roboflow RF-DETR model look at the frame. Human review keeps unconfirmed items off the claim. A ghost overlay lines new photos up with old ones so “worse versus better” is visible.</p>
+          <div class="flow-row">
+            <article><b>01</b><h3>Sign in</h3><p>Tenant or owner / inspector.</p></article>
+            <article><b>02</b><h3>Property</h3><p>The app points the lens.</p></article>
+            <article><b>03</b><h3>Capture</h3><p>Gemini + RF-DETR verify.</p></article>
+            <article><b>04</b><h3>Review</h3><p>Unreviewed is not a claim.</p></article>
+            <article><b>05</b><h3>Share</h3><p>A report landlords can act on.</p></article>
+          </div>
+          <div class="stack-frame"><img src="assets/lab/cribcheck/stack.png" alt="Tech stack: Next.js, MongoDB, Gemini, Grok, Roboflow, WPRDC"></div>
+        </section>
+        <section class="case-chapter" id="model">
+          <p class="eyebrow">The model</p>
+          <h2>High precision, honest recall.</h2>
+          <p>Roboflow RF-DETR Small was trained to spot mold, seepage, cracks, and peeling paint. On the held-out test set it reached 79.7% mAP@50 and 92.1% precision. Recall is 70% — which is why Gemini still sits in the loop on ambiguous mold rather than pretending computer vision is finished.</p>
+          <div class="case-grid-4">
+            <div class="metric-card"><strong>79.7%</strong><span>mAP@50</span></div>
+            <div class="metric-card"><strong>92.1%</strong><span>Precision</span></div>
+            <div class="metric-card"><strong>70.0%</strong><span>Recall</span></div>
+            <div class="metric-card"><strong>79.4%</strong><span>F1</span></div>
+          </div>
+        </section>
+        <section class="case-chapter" id="honesty">
+          <p class="eyebrow">Boundaries</p>
+          <h2>We will not invent certainty.</h2>
+          <div class="case-grid-3">
+            <div class="bound-card"><h3>We will</h3><p>Surface visible indicators, triage what warrants a look, and measure change on the same surface over time.</p></div>
+            <div class="bound-card"><h3>We will not</h3><p>Diagnose health, identify mold species, or claim to see moisture behind walls.</p></div>
+            <div class="bound-card"><h3>Why it matters</h3><p>WHO declined a single mold threshold. Professional meters still confirm. CribCheck is early evidence, not a lab.</p></div>
+          </div>
+        </section>
+        <section class="case-chapter" id="assets">
+          <p class="eyebrow">Open the work</p>
+          <h2>Product, source, presentation.</h2>
+          <p>Use the live app as a tenant, read the repo, or download the pitch we presented.</p>
+          <div class="asset-row">
+            <a class="button button-primary magnetic" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Live app <i class="bi bi-arrow-up-right"></i></a>
+            <a class="button button-ghost magnetic" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub repo</a>
+            <a class="button button-ghost magnetic" href="assets/lab/cribcheck/cribCheck_pitch.pptx">Download pitch deck</a>
+            <a class="button button-ghost magnetic" href="index.html#lab">Back to the lab</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><span>© 2026 Pranav Srusti</span><span>CribCheck · HackCMU</span><a href="#top">Back to top <i class="bi bi-arrow-up"></i></a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

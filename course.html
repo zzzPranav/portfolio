@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Idea Brief | Pranav Srusti</title>
+  <meta name="description" content="Work-in-progress Product Management Essentials brief: helping diet trackers catch nutrient gaps in 14 days instead of 180.">
+  <link rel="icon" href="assets/img/profile_photu.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"><link href="assets/css/main.css" rel="stylesheet"><link href="assets/css/motion.css" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="ambient-stripes" aria-hidden="true"><span class="squiggle squiggle-a"></span><span class="squiggle squiggle-b"></span><span class="squiggle squiggle-c"></span><span class="squiggle squiggle-d"></span><span class="squiggle squiggle-e"></span></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <header class="site-header"><a class="wordmark" href="index.html#top">PS<span>.</span></a><nav class="desktop-nav"><a href="index.html#story">Story</a><a href="index.html#education">Education</a><a href="index.html#experience">Experience</a><a href="index.html#lab">Lab</a><a href="index.html#lens">Wider lens</a><a class="nav-resume magnetic" href="assets/resume/Pranav_Srusti_Resume.pdf" target="_blank" rel="noopener">Resume <i class="bi bi-arrow-up-right"></i></a></nav><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i class="bi bi-list"></i></button></header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><button class="menu-close" id="menu-close" aria-label="Close navigation"><i class="bi bi-x-lg"></i></button><p class="eyebrow">Navigate / Course brief</p><nav><a href="index.html#story">Story</a><a href="index.html#lab">Lab</a><a href="#problem">Problem</a><a href="#market">Market</a><a href="#open">Still open</a></nav><a class="mobile-resume" href="assets/lab/course/product-idea-workbook.docx">Download workbook</a></div>
+  <main id="top">
+    <section class="case-hero" id="story">
+      <div>
+        <p class="eyebrow">Product Management Essentials <span>/</span> work in progress</p>
+        <div class="case-kicker"><span>Personal nutrition</span><span>Diet tracker</span><span>Monitor nutrient intake</span></div>
+        <h1>Catch the gap<br><em>in 14 days,</em><br>not 180.</h1>
+        <p>U.S. adults who already track their food still wait, on average, 180 days to learn they are short on a micronutrient. The desired outcome is 14. This brief is the problem and market work from Heinz. The product idea itself is due at the end of the course, so the solution and value spaces are still blank on purpose.</p>
+        <div class="featured-actions" style="margin-top:32px">
+          <a class="button button-primary magnetic" href="#problem">Read the problem space</a>
+          <a class="button button-ghost magnetic" href="assets/lab/course/product-idea-workbook.docx">Download workbook</a>
+          <a class="button button-ghost magnetic" href="index.html#lab">Back to the lab</a>
+        </div>
+      </div>
+      <div class="stack-frame" style="margin:0;background:var(--paper);padding:16px">
+        <img src="assets/lab/course/journey-map.png" alt="Customer journey map for a diet tracker monitoring nutrient intake">
+      </div>
+    </section>
+    <div class="case-layout">
+      <nav class="case-toc" aria-label="Brief chapters">
+        <a href="#problem">Problem</a>
+        <a href="#causes">Causes</a>
+        <a href="#sizing">Sizing</a>
+        <a href="#market">Market</a>
+        <a href="#open">Still open</a>
+      </nav>
+      <div>
+        <section class="case-chapter" id="problem">
+          <p class="eyebrow">1. Customer problem space</p>
+          <h2>The tracker sees totals. The body waits for a checkup.</h2>
+          <p>Actor: diet tracker. Job to be done: monitor nutrient intake. Today the average nutrient-deficiency risk rate among users is 31%. The target is 10%. Health-goal completion sits at 22% against a desired 65%. Diet consistency is 35% of days meeting targets, against 75%. And the average time to detect a nutrient gap after it begins is 180 days, aligned with a bi-annual checkup, against a desired 14.</p>
+          <div class="case-grid-4">
+            <div class="metric-card"><strong>180d</strong><span>Actual time to identify a gap</span></div>
+            <div class="metric-card"><strong>14d</strong><span>Desired time to flag it</span></div>
+            <div class="metric-card"><strong>31%</strong><span>Users at risk of a deficiency</span></div>
+            <div class="metric-card"><strong>10%</strong><span>Target risk rate</span></div>
+          </div>
+        </section>
+        <section class="case-chapter" id="causes">
+          <p class="eyebrow">Why the gap holds</p>
+          <h2>Raw numbers, silent weeks, annual bloodwork.</h2>
+          <div class="case-grid-3">
+            <div class="bound-card"><h3>No “why” or “what”</h3><p>Apps report grams and %DV without translating a shortfall into a cause or a food to fix it.</p></div>
+            <div class="bound-card"><h3>Trends stay buried</h3><p>Shortfalls build over weeks. Nothing surfaces the trend until the user digs into breakdowns.</p></div>
+            <div class="bound-card"><h3>Detection is clinical</h3><p>The 180-day lag is the healthcare cadence, not the app. Portion estimates also skew the log.</p></div>
+          </div>
+        </section>
+        <section class="case-chapter" id="sizing">
+          <p class="eyebrow">Problem statement</p>
+          <h2>11.5 million people, 166 days late.</h2>
+          <p>U.S. adults who track nutrition want to catch a deficiency within about 14 days of it starting. They currently face an average detection time of 180 days. That puts an estimated 31% of roughly 55 million actors at risk each year, about 11.5 million people, and leaves around 2.75 billion excess undetected-risk days on the table annually.</p>
+        </section>
+        <section class="case-chapter" id="market">
+          <p class="eyebrow">2. Market space</p>
+          <h2>A growing personal-nutrition market, three first cuts.</h2>
+          <p>Same actor set: about 55 million U.S. adults. The calorie and nutrition-tracking market has grown at roughly 13–15% CAGR since 2018. TAM is deferred until the last assignment. Early profiles in the workbook: chronic-condition preventers (~11M), performance optimizers (~8M), and casual wellness trackers (~19M).</p>
+          <div class="flow-row">
+            <article><b>01</b><h3>Preventers</h3><p>Age 45–59, highest stakes from an undetected gap.</p></article>
+            <article><b>02</b><h3>Optimizers</h3><p>18–29, wearable-integrated, likely early premium payers.</p></article>
+            <article><b>03</b><h3>Casual</h3><p>30–44, largest segment, intermittent loggers.</p></article>
+            <article><b>04</b><h3>TAM</h3><p>Not started. Due with the last assignment.</p></article>
+            <article><b>05</b><h3>Position</h3><p>Competition and maps are still empty.</p></article>
+          </div>
+        </section>
+        <section class="case-chapter" id="open">
+          <p class="eyebrow">Still in the workbook</p>
+          <h2>Solution and value spaces wait for the product idea.</h2>
+          <p>The course asks for the idea brief at the end. MVP outline, user views, requirements, features, pricing, and the value proposition are listed and blank. I will fill them as the assignments land rather than invent a finished product here.</p>
+          <div class="asset-row">
+            <a class="button button-primary magnetic" href="assets/lab/course/product-idea-workbook.docx">Download the working doc</a>
+            <a class="button button-ghost magnetic" href="index.html#lab">Back to the lab</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><span>© 2026 Pranav Srusti</span><span>Product Idea Workbook · WIP</span><a href="#top">Back to top <i class="bi bi-arrow-up"></i></a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

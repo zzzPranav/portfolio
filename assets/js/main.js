@@ -18,7 +18,7 @@
   document.querySelectorAll('.education-card p').forEach((paragraph) => {
     if (paragraph.textContent.trim() === 'Business Intelligence & Data Analytics') paragraph.remove();
   });
-  document.querySelector('.ambient-stripes')?.remove();
+  // Ambient stripes stay; motion.css restores them.
 
   document.querySelectorAll('.lens-copy .signature').forEach((signature) => signature.remove());
   document.querySelectorAll('.marquee-track').forEach((track) => {
@@ -100,18 +100,12 @@
     timeline.append(johnDeereGroup);
   }
 
-  if (!prefersReducedMotion) {
-    document.addEventListener('pointermove', (event) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 42;
-      const y = (event.clientY / window.innerHeight - 0.5) * 42;
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-      document.documentElement.style.setProperty('--stripe-angle', `${-2 + x * 0.15}deg`);
-    }, { passive: true });
-  }
-
   const progress = document.querySelector('#scroll-progress');
   const hero = document.querySelector('.hero');
+  const header = document.querySelector('.site-header');
+  const cursorDot = document.querySelector('#cursor-dot');
+  const cursorRing = document.querySelector('#cursor-ring');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   document.querySelectorAll('.portrait-frame').forEach((frame) => {
     frame.addEventListener('mouseenter', () => frame.classList.add('signature-active'));
     frame.addEventListener('mouseleave', () => frame.classList.remove('signature-active'));
@@ -119,48 +113,192 @@
     frame.addEventListener('focusout', () => frame.classList.remove('signature-active'));
   });
 
-  function updateScrollProgress() {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    progress.style.transform = `scaleX(${scrollable ? window.scrollY / scrollable : 0})`;
-    document.documentElement.style.setProperty('--stripe-shift', `${window.scrollY * -0.28}px`);
-    document.documentElement.style.setProperty('--stripe-angle', `${-2 + window.scrollY * 0.002}deg`);
-    document.documentElement.style.setProperty('--lens-shift', `${window.scrollY * -0.18}px`);
-  }
+  const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2, tx: window.innerWidth / 2, ty: window.innerHeight / 2 };
+  const mouseShift = { x: 0, y: 0, tx: 0, ty: 0 };
 
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  updateScrollProgress();
+  function updateScrollProgress() {
+    const scrollY = window.scrollY;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.transform = `scaleX(${scrollable ? scrollY / scrollable : 0})`;
+    document.documentElement.style.setProperty('--stripe-shift', `${scrollY * -0.22}px`);
+    document.documentElement.style.setProperty('--lens-shift', `${scrollY * -0.14}px`);
+    if (header) {
+      header.classList.toggle('is-scrolled', scrollY > 24);
+    }
+    document.querySelectorAll('.desktop-nav a[href^="#"], .desktop-nav a[href*="index.html#"]').forEach((link) => {
+      const id = link.getAttribute('href').split('#')[1];
+      const section = id && document.getElementById(id);
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      link.classList.toggle('is-active', rect.top <= 140 && rect.bottom > 160);
+    });
+    document.querySelectorAll('.case-toc a[href^="#"]').forEach((link) => {
+      const section = document.querySelector(link.getAttribute('href'));
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      link.classList.toggle('is-active', rect.top < 180 && rect.bottom > 180);
+    });
+  }
 
   if (hero && !prefersReducedMotion) {
     hero.addEventListener('pointermove', (event) => {
       const bounds = hero.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width - 0.5;
       const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-      hero.style.setProperty('--pointer-x', `${x * 18}px`);
-      hero.style.setProperty('--pointer-y', `${y * 18}px`);
+      hero.style.setProperty('--pointer-x', `${x * 22}px`);
+      hero.style.setProperty('--pointer-y', `${y * 22}px`);
     });
     hero.addEventListener('pointerleave', () => {
       hero.style.setProperty('--pointer-x', '0px');
       hero.style.setProperty('--pointer-y', '0px');
     });
   }
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+
+  if (!prefersReducedMotion && finePointer) {
+    document.body.classList.add('has-cursor');
+    document.addEventListener('pointermove', (event) => {
+      pointer.tx = event.clientX;
+      pointer.ty = event.clientY;
+      mouseShift.tx = (event.clientX / window.innerWidth - 0.5) * 36;
+      mouseShift.ty = (event.clientY / window.innerHeight - 0.5) * 24;
+      document.documentElement.style.setProperty('--spot-x', `${(event.clientX / window.innerWidth) * 100}%`);
+      document.documentElement.style.setProperty('--spot-y', `${(event.clientY / window.innerHeight) * 100}%`);
+    }, { passive: true });
+    document.querySelectorAll('a, button, .flip-card, .featured-media').forEach((el) => {
+      el.addEventListener('pointerenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('pointerleave', () => document.body.classList.remove('cursor-hover'));
     });
-  }, { threshold: 0.12 });
-  const revealElements = document.querySelectorAll('.reveal');
-  revealElements.forEach((element) => revealObserver.observe(element));
-  window.addEventListener('load', () => {
-    if (prefersReducedMotion) {
-      revealElements.forEach((element) => element.classList.add('visible'));
-      return;
-    }
-    revealElements.forEach((element, index) => {
-      window.setTimeout(() => element.classList.add('visible'), index * 90);
+  }
+
+  document.querySelectorAll('.magnetic').forEach((el) => {
+    el.addEventListener('pointermove', (event) => {
+      if (prefersReducedMotion || !finePointer) return;
+      const bounds = el.getBoundingClientRect();
+      const x = event.clientX - bounds.left - bounds.width / 2;
+      const y = event.clientY - bounds.top - bounds.height / 2;
+      el.style.transform = `translate(${x * 0.22}px, ${y * 0.28}px)`;
     });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   });
+
+  document.querySelectorAll('.tilt-card, .education-card').forEach((el) => {
+    el.addEventListener('pointermove', (event) => {
+      if (prefersReducedMotion || !finePointer) return;
+      const bounds = el.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width;
+      const y = (event.clientY - bounds.top) / bounds.height;
+      el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 7}deg) rotateY(${(x - 0.5) * 9}deg)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+
+  const revealElements = document.querySelectorAll('.reveal');
+  function updateReveals() {
+    revealElements.forEach((element) => {
+      if (element.classList.contains('visible')) return;
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9 && rect.bottom > 40) element.classList.add('visible');
+    });
+  }
+  if (prefersReducedMotion) {
+    revealElements.forEach((element) => element.classList.add('visible'));
+  } else {
+    updateReveals();
+    window.addEventListener('load', updateReveals);
+  }
+
+  const deck = document.querySelector('#idea-deck');
+  if (deck) {
+    const slides = [...deck.querySelectorAll('.deck-slide')];
+    const dots = deck.querySelector('#deck-dots');
+    let index = 0;
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to beat ${i + 1}`);
+      dot.addEventListener('click', () => show(i));
+      dots.append(dot);
+    });
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('is-on', i === index));
+      [...dots.children].forEach((dot, i) => dot.classList.toggle('is-on', i === index));
+    }
+    show(0);
+    deck.querySelector('[data-deck="prev"]')?.addEventListener('click', () => show(index - 1));
+    deck.querySelector('[data-deck="next"]')?.addEventListener('click', () => show(index + 1));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') show(index + 1);
+      if (event.key === 'ArrowLeft') show(index - 1);
+    });
+    let touchX = 0;
+    deck.addEventListener('touchstart', (event) => { touchX = event.changedTouches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', (event) => {
+      const dx = event.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  }
+
+  let lenis;
+  if (!prefersReducedMotion && typeof Lenis === 'function') {
+    lenis = new Lenis({
+      duration: 1.15,
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.1
+    });
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+      document.querySelectorAll('.hero-portrait, .case-collage, .lens-image').forEach((el) => {
+        gsap.to(el, {
+          y: el.classList.contains('hero-portrait') ? 70 : 90,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+      });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const id = link.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -70 });
+        setMenu(false);
+      });
+    });
+  }
+
+  function tick() {
+    pointer.x += (pointer.tx - pointer.x) * 0.22;
+    pointer.y += (pointer.ty - pointer.y) * 0.22;
+    mouseShift.x += (mouseShift.tx - mouseShift.x) * 0.08;
+    mouseShift.y += (mouseShift.ty - mouseShift.y) * 0.08;
+    if (cursorDot) cursorDot.style.transform = `translate3d(${pointer.tx}px, ${pointer.ty}px, 0)`;
+    if (cursorRing) cursorRing.style.transform = `translate3d(${pointer.x}px, ${pointer.y}px, 0)`;
+    document.documentElement.style.setProperty('--mouse-x', `${mouseShift.x}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${mouseShift.y}px`);
+    document.documentElement.style.setProperty('--stripe-angle', `${-2 + mouseShift.x * 0.08}deg`);
+    if (!lenis) {
+      updateScrollProgress();
+      if (!prefersReducedMotion) updateReveals();
+    }
+    requestAnimationFrame(tick);
+  }
+  if (lenis) lenis.on('scroll', () => {
+    updateScrollProgress();
+    if (!prefersReducedMotion) updateReveals();
+  });
+  window.addEventListener('scroll', () => {
+    updateScrollProgress();
+    if (!prefersReducedMotion) updateReveals();
+  }, { passive: true });
+  updateScrollProgress();
+  requestAnimationFrame(tick);
+
   if (typeof GLightbox === 'function') GLightbox({ selector: '.glightbox' });
 })();
