@@ -6,18 +6,21 @@
   const menuLinks = document.querySelectorAll('.mobile-menu a');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function setMenu(open) {
+    const wasOpen = menu.classList.contains('open');
     menu.classList.toggle('open', open);
     menu.setAttribute('aria-hidden', String(!open));
     menuToggle.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) menuClose.focus();
+    else if (wasOpen) menuToggle.focus();
   }
   menuToggle.addEventListener('click', () => setMenu(true));
   menuClose.addEventListener('click', () => setMenu(false));
   menuLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
-
-  document.querySelectorAll('.education-card p').forEach((paragraph) => {
-    if (paragraph.textContent.trim() === 'Business Intelligence & Data Analytics') paragraph.remove();
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu.classList.contains('open')) setMenu(false);
   });
+
   // Ambient stripes stay; motion.css restores them.
 
   document.querySelectorAll('.lens-copy .signature').forEach((signature) => signature.remove());
@@ -28,7 +31,7 @@
     firstSet.className = 'marquee-set';
     secondSet.className = 'marquee-set';
     items.forEach((item) => firstSet.append(item));
-    firstSet.querySelectorAll('*').forEach((item) => item.removeAttribute('aria-hidden'));
+    firstSet.setAttribute('aria-hidden', 'true');
     secondSet.innerHTML = firstSet.innerHTML;
     secondSet.setAttribute('aria-hidden', 'true');
     track.replaceChildren(firstSet, secondSet);
@@ -156,6 +159,10 @@
 
   if (!prefersReducedMotion && finePointer) {
     document.body.classList.add('has-cursor');
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') document.body.classList.remove('has-cursor');
+    });
+    document.addEventListener('pointerdown', () => document.body.classList.add('has-cursor'));
     document.addEventListener('pointermove', (event) => {
       pointer.tx = event.clientX;
       pointer.ty = event.clientY;

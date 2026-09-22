@@ -7,14 +7,15 @@
   <link rel="icon" href="assets/img/profile_photu.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"><link href="assets/css/main.css" rel="stylesheet"><link href="assets/css/motion.css" rel="stylesheet">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
   <div class="noise-layer" aria-hidden="true"></div>
   <div class="ambient-stripes" aria-hidden="true"><span class="squiggle squiggle-a"></span><span class="squiggle squiggle-b"></span><span class="squiggle squiggle-c"></span><span class="squiggle squiggle-d"></span><span class="squiggle squiggle-e"></span></div>
   <div class="scroll-progress" id="scroll-progress"></div>
-  <header class="site-header"><a class="wordmark" href="index.html#top">PS<span>.</span></a><nav class="desktop-nav"><a href="index.html#story">Story</a><a href="index.html#education">Education</a><a href="index.html#experience">Experience</a><a href="index.html#lab">Lab</a><a href="index.html#lens">Wider lens</a><a class="nav-resume magnetic" href="assets/resume/Pranav_Srusti_Resume.pdf" target="_blank" rel="noopener">Resume <i class="bi bi-arrow-up-right"></i></a></nav><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i class="bi bi-list"></i></button></header>
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><button class="menu-close" id="menu-close" aria-label="Close navigation"><i class="bi bi-x-lg"></i></button><p class="eyebrow">Navigate / CribCheck</p><nav><a href="index.html#story">Story</a><a href="index.html#lab">Lab</a><a href="#deck">The idea</a><a href="#product">Product</a><a href="#model">Model</a></nav><a class="mobile-resume" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Open the live app <i class="bi bi-arrow-up-right"></i></a></div>
-  <main id="top">
+  <header class="site-header"><a class="wordmark" href="index.html" aria-label="Pranav Srusti, home">PS<span>.</span></a><nav class="desktop-nav" aria-label="Primary"><a href="index.html#experience">Work</a><a href="index.html#lab">Lab</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume magnetic" href="assets/resume/Pranav_Srusti_Resume.pdf" target="_blank" rel="noopener">Resume <span class="sr-only">(opens in a new tab)</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></nav><button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><i class="bi bi-list" aria-hidden="true"></i></button></header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><button class="menu-close" id="menu-close" aria-label="Close navigation"><i class="bi bi-x-lg"></i></button><p class="eyebrow">Navigate / CribCheck</p><nav><a href="index.html#experience">Work</a><a href="index.html#lab">Lab</a><a href="#deck">The idea</a><a href="#product">Product</a><a href="#model">Model</a></nav><a class="mobile-resume" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub repo <i class="bi bi-arrow-up-right"></i></a></div>
+  <main id="main-content">
     <section class="case-hero" id="story">
       <div class="reveal">
         <p class="eyebrow">HackCMU 2026 <span>/</span> team gotplacestobe</p>
@@ -22,8 +23,7 @@
         <h1>cribCheck<br><em>early evidence</em><br>before the crisis.</h1>
         <p>Renters see the stain first. Landlords need a record they can trust. CribCheck guides a phone camera across high-risk surfaces, labels what it sees, and turns that into a shareable property report — evidence, not a medical or legal diagnosis.</p>
         <div class="featured-actions" style="margin-top:32px">
-          <a class="button button-primary magnetic" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Launch live app <i class="bi bi-arrow-up-right"></i></a>
-          <a class="button button-ghost magnetic" href="#deck">Walk through the pitch</a>
+          <a class="button button-primary magnetic" href="#deck">Walk through the pitch</a>
           <a class="button button-ghost magnetic" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -46,7 +46,7 @@
         <section class="case-chapter" id="deck">
           <p class="eyebrow">Browse the pitch</p>
           <h2>Twelve beats.<br>Arrow keys work.</h2>
-          <p>This is the same story we used at the table. Click through it, then jump to the live product or the source.</p>
+          <p>This is the same story we used at the table. Click through it, then jump to the source or the pitch deck.</p>
           <div class="deck" id="idea-deck">
             <div class="deck-stage">
               <article class="deck-slide is-on">
@@ -152,10 +152,9 @@
         <section class="case-chapter" id="assets">
           <p class="eyebrow">Open the work</p>
           <h2>Product, source, presentation.</h2>
-          <p>Use the live app as a tenant, read the repo, or download the pitch we presented.</p>
+          <p>Read the repo or download the pitch we presented.</p>
           <div class="asset-row">
-            <a class="button button-primary magnetic" href="https://cribcheck.vercel.app/" target="_blank" rel="noopener">Live app <i class="bi bi-arrow-up-right"></i></a>
-            <a class="button button-ghost magnetic" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub repo</a>
+            <a class="button button-primary magnetic" href="https://github.com/Grbmax/gotplacestobe" target="_blank" rel="noopener">GitHub repo</a>
             <a class="button button-ghost magnetic" href="assets/lab/cribcheck/cribCheck_pitch.pptx">Download pitch deck</a>
             <a class="button button-ghost magnetic" href="index.html#lab">Back to the lab</a>
           </div>
@@ -163,7 +162,7 @@
       </div>
     </div>
   </main>
-  <footer><span>© 2026 Pranav Srusti</span><span>CribCheck · HackCMU</span><a href="#top">Back to top <i class="bi bi-arrow-up"></i></a></footer>
+  <footer><span>© 2026 Pranav Srusti</span><span>CribCheck · HackCMU</span><a href="#main-content">Back to top <i class="bi bi-arrow-up" aria-hidden="true"></i></a></footer>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
